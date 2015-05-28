@@ -1,9 +1,6 @@
 package com.example.searchqook;
 
 import java.util.ArrayList;
-
-import android.R;
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.android.actionbarcompat.ActionBarActivity;
+import com.example.encyctest.R;
 import com.hhdd.messi.Naver;
 import com.hhdd.messi.event.*;
 import com.hhdd.messi.naver.object.search.*;
