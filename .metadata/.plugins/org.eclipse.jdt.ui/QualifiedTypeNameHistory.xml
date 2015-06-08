@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="android.support.v7.appcompat.R"/>
+<fullyQualifiedTypeName name="com.example.android.actionbarcompat.ActionBarActivity"/>
+<fullyQualifiedTypeName name="com.hhdd.messi.event.NaverEventListener.OnEncycListener"/>
+<fullyQualifiedTypeName name="android.R"/>
+<fullyQualifiedTypeName name="android.widget.Button"/>
+<fullyQualifiedTypeName name="android.R.id"/>
+<fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
+<fullyQualifiedTypeName name="android.widget.EditText"/>
+<fullyQualifiedTypeName name="android.widget.ArrayAdapter"/>
+<fullyQualifiedTypeName name="android.content.Context"/>
+<fullyQualifiedTypeName name="android.view.ViewGroup"/>
+<fullyQualifiedTypeName name="android.widget.ImageView"/>
+<fullyQualifiedTypeName name="android.widget.TextView"/>
+<fullyQualifiedTypeName name="android.view.LayoutInflater"/>
+<fullyQualifiedTypeName name="android.view.View"/>
+<fullyQualifiedTypeName name="android.widget.ListView"/>
+<fullyQualifiedTypeName name="com.example.encyctest.R"/>
+</qualifiedTypeNameHistroy>
