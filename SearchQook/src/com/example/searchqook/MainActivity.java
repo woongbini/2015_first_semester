@@ -1,6 +1,7 @@
 package com.example.searchqook;
 
 import java.util.ArrayList;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,8 +20,8 @@ import android.widget.TextView;
 import com.example.android.actionbarcompat.ActionBarActivity;
 import com.example.encyctest.R;
 import com.hhdd.messi.Naver;
-import com.hhdd.messi.event.*;
-import com.hhdd.messi.naver.object.search.*;
+import com.hhdd.messi.event.NaverEventListener;
+import com.hhdd.messi.naver.object.search.EncycObject;
 
 
 public class MainActivity extends ActionBarActivity implements NaverEventListener.OnEncycListener{
