@@ -18,7 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.android.actionbarcompat.ActionBarActivity;
-import com.example.encyctest.R;
+
 import com.hhdd.messi.Naver;
 import com.hhdd.messi.event.NaverEventListener;
 import com.hhdd.messi.naver.object.search.EncycObject;
