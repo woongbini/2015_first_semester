@@ -18,13 +18,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.android.actionbarcompat.ActionBarActivity;
-
 import com.hhdd.messi.Naver;
 import com.hhdd.messi.event.NaverEventListener;
-import com.hhdd.messi.naver.object.search.EncycObject;
+//import com.hhdd.messi.naver.object.search.EncycObject;
+import com.hhdd.messi.naver.object.search.BlogObject;
+//import com.hhdd.messi.naver.object.search.ImageObject;
 
 
-public class MainActivity extends ActionBarActivity implements NaverEventListener.OnEncycListener{
+public class MainActivity extends ActionBarActivity implements NaverEventListener.OnBlogListener{
 
 	private Naver open_api;
     @Override
@@ -32,15 +33,16 @@ public class MainActivity extends ActionBarActivity implements NaverEventListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
        open_api = new Naver();
-       open_api.setEncycListener(this);
+       open_api.setBlogListener(this);
        open_api.setSearchKey("a868354ee2b5ee74ab78c84616a61480");
+       //open_api.BlogSearch("¸Å½Ã¾÷");
        
         Button btn = (Button) findViewById(R.id.bt1);
         btn.setOnClickListener(new OnClickListener() {
         	@Override
         	public void onClick (View v) {
         		EditText editText = (EditText)findViewById(R.id.et1);
-        		open_api.EncycSearch(editText.getText().toString());
+        		open_api.BlogSearch(editText.getText().toString());
         	} });
         
      
@@ -61,7 +63,7 @@ public class MainActivity extends ActionBarActivity implements NaverEventListene
 	}
 
 	@Override
-	public void onResult(ArrayList<EncycObject> arg0) {
+	public void onResult(ArrayList<BlogObject> arg0) {
 		ListView listView = (ListView) findViewById(R.id.lv1);
 		ListAdapter b1_adapter = new ListAdapter(this, R.layout.item_row, arg0);
 		listView.setAdapter(b1_adapter);
@@ -80,12 +82,12 @@ public class MainActivity extends ActionBarActivity implements NaverEventListene
         return super.onOptionsItemSelected(item);
     }
 	
-	public class ListAdapter extends ArrayAdapter<EncycObject>{
-    	public ArrayList<EncycObject> items;
+	public class ListAdapter extends ArrayAdapter<BlogObject>{
+    	public ArrayList<BlogObject> items;
     	private Context mcontext;
     	private int count = 0;
     	
-    	public ListAdapter(Context context, int textViewResourceId, ArrayList<EncycObject> items) {
+    	public ListAdapter(Context context, int textViewResourceId, ArrayList<BlogObject> items) {
             super(context, textViewResourceId, items);
             mcontext = context;
     		this.items = items;
@@ -99,13 +101,13 @@ public class MainActivity extends ActionBarActivity implements NaverEventListene
                 v = vi.inflate(R.layout.item_row, null);
             }
             
-            EncycObject Info = items.get(position);
+            BlogObject Info = items.get(position);
             
             if (Info != null) {
             	ImageView iv1 = (ImageView) v.findViewById(R.id.iv1);
             	TextView tv1 = (TextView) v.findViewById(R.id.tv1);
             	TextView tv2 = (TextView) v.findViewById(R.id.tv2);
-            	Info.BindThunbmail(iv1);
+            	//Info.setBloggerLink(iv1);
             	tv1.setText(Info.getTitle());
             	tv2.setText(Info.getDescription());
             }
