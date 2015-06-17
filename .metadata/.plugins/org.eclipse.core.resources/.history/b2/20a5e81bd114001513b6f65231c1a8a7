@@ -39,7 +39,7 @@ public class MainActivity extends ActionBarActivity implements NaverEventListene
        open_api = new Naver();
        open_api.setBlogListener(this);
        open_api.setSearchKey("a868354ee2b5ee74ab78c84616a61480");
-       
+       //open_api.BlogSearch("¸Å½Ã¾÷");
        backPressCloseHandler = new BackPressCloseHandler(this);
        
         Button btn = (Button) findViewById(R.id.bt1);
@@ -124,6 +124,18 @@ public class MainActivity extends ActionBarActivity implements NaverEventListene
             }
             return v;
         }
+    	
+    	public void getDataFromWeb() {
+			try {
+				Document doc = Jsoup.connect("Info.getBloggerLink()").get();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+    	
+    
 	}
 	
 	

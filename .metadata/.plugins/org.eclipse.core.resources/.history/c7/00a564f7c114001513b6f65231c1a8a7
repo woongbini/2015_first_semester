@@ -1,10 +1,7 @@
 package com.example.searchqook;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+//import
 import com.example.android.actionbarcompat.ActionBarActivity;
 import com.hhdd.messi.Naver;
 import com.hhdd.messi.event.NaverEventListener;
@@ -26,12 +24,12 @@ import com.hhdd.messi.event.NaverEventListener;
 //import com.hhdd.messi.naver.object.search.ImageObject;
 import com.hhdd.messi.naver.object.search.BlogObject;
 
+
+
 public class MainActivity extends ActionBarActivity implements NaverEventListener.OnBlogListener{
 
 	private Naver open_api;
 	private BackPressCloseHandler backPressCloseHandler;
-	public Document doc;
-	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +37,7 @@ public class MainActivity extends ActionBarActivity implements NaverEventListene
        open_api = new Naver();
        open_api.setBlogListener(this);
        open_api.setSearchKey("a868354ee2b5ee74ab78c84616a61480");
-       
+       //open_api.BlogSearch("¸Å½Ã¾÷");
        backPressCloseHandler = new BackPressCloseHandler(this);
        
         Button btn = (Button) findViewById(R.id.bt1);
@@ -89,8 +87,6 @@ public class MainActivity extends ActionBarActivity implements NaverEventListene
         return super.onOptionsItemSelected(item);
     }
 	
-
-	
 	public class ListAdapter extends ArrayAdapter<BlogObject>{
     	public ArrayList<BlogObject> items;
     	private Context mcontext;
@@ -110,21 +106,20 @@ public class MainActivity extends ActionBarActivity implements NaverEventListene
                 v = vi.inflate(R.layout.item_row, null);
             }
             
-           BlogObject Info = items.get(position);
-         
+            BlogObject Info = items.get(position);
             
             if (Info != null) {
             	ImageView iv1 = (ImageView) v.findViewById(R.id.iv1);
             	TextView tv1 = (TextView) v.findViewById(R.id.tv1);
             	TextView tv2 = (TextView) v.findViewById(R.id.tv2);
-				//ImageView
-            	// = Info.getBloggerLink();
+				//Info.getBloggerLink(iv1);
             	tv1.setText(Info.getTitle());
             	tv2.setText(Info.getDescription());
             }
             return v;
         }
-	}
+    	
+    }
 	
 	
 }
