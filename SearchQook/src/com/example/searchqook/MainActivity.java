@@ -28,6 +28,7 @@ import com.hhdd.messi.naver.object.search.BlogObject;
 public class MainActivity extends ActionBarActivity implements NaverEventListener.OnBlogListener{
 
 	private Naver open_api;
+	private BackPressCloseHandler backPressCloseHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +37,7 @@ public class MainActivity extends ActionBarActivity implements NaverEventListene
        open_api.setBlogListener(this);
        open_api.setSearchKey("a868354ee2b5ee74ab78c84616a61480");
        //open_api.BlogSearch("¸Å½Ã¾÷");
+       backPressCloseHandler = new BackPressCloseHandler(this);
        
         Button btn = (Button) findViewById(R.id.bt1);
         btn.setOnClickListener(new OnClickListener() {
@@ -43,11 +45,13 @@ public class MainActivity extends ActionBarActivity implements NaverEventListene
         	public void onClick (View v) {
         		EditText editText = (EditText)findViewById(R.id.et1);
         		open_api.BlogSearch(editText.getText().toString());
-        	} });
-        
-     
-        
+        	} });   
     }
+    
+    @Override
+	public void onBackPressed() {
+		backPressCloseHandler.onBackPressed();
+	}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -107,7 +111,7 @@ public class MainActivity extends ActionBarActivity implements NaverEventListene
             	ImageView iv1 = (ImageView) v.findViewById(R.id.iv1);
             	TextView tv1 = (TextView) v.findViewById(R.id.tv1);
             	TextView tv2 = (TextView) v.findViewById(R.id.tv2);
-            	//Info.setBloggerLink(iv1);
+				//Info.getBloggerLink(iv1);
             	tv1.setText(Info.getTitle());
             	tv2.setText(Info.getDescription());
             }
@@ -115,4 +119,6 @@ public class MainActivity extends ActionBarActivity implements NaverEventListene
         }
     	
     }
+	
+	
 }
