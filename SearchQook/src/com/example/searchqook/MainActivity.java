@@ -1,13 +1,9 @@
 package com.example.searchqook;
 
-import java.io.IOException;
 import java.util.ArrayList;
-
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,18 +12,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.example.android.actionbarcompat.ActionBarActivity;
 import com.hhdd.messi.Naver;
 import com.hhdd.messi.event.NaverEventListener;
-//import com.hhdd.messi.naver.object.search.EncycObject;
-//import com.hhdd.messi.naver.object.search.ImageObject;
 import com.hhdd.messi.naver.object.search.BlogObject;
 
 public class MainActivity extends ActionBarActivity implements NaverEventListener.OnBlogListener{
@@ -35,16 +29,20 @@ public class MainActivity extends ActionBarActivity implements NaverEventListene
 	private Naver open_api;
 	private BackPressCloseHandler backPressCloseHandler;
 	public Document doc;
+	//private ListView scrapList;
+	//private ArrayList<ScapList> scrap;
+
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+    	
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       open_api = new Naver();
-       open_api.setBlogListener(this);
-       open_api.setSearchKey("a868354ee2b5ee74ab78c84616a61480");
-       
-       backPressCloseHandler = new BackPressCloseHandler(this);
+        
+        open_api = new Naver();
+        open_api.setBlogListener(this);
+        open_api.setSearchKey("a868354ee2b5ee74ab78c84616a61480");
+        backPressCloseHandler = new BackPressCloseHandler(this);
        
         Button btn = (Button) findViewById(R.id.bt1);
         btn.setOnClickListener(new OnClickListener() {
@@ -52,7 +50,13 @@ public class MainActivity extends ActionBarActivity implements NaverEventListene
         	public void onClick (View v) {
         		EditText editText = (EditText)findViewById(R.id.et1);
         		open_api.BlogSearch(editText.getText().toString());
+        		
+
         	} });   
+    }
+    public void myListener(View target) {
+    	Intent intent = new Intent(getApplicationContext(), ViewActivity.class);
+		startActivity(intent);
     }
     
     @Override
@@ -92,9 +96,7 @@ public class MainActivity extends ActionBarActivity implements NaverEventListene
         }
         return super.onOptionsItemSelected(item);
     }
-	
 
-	
 	public class ListAdapter extends ArrayAdapter<BlogObject>{
     	public ArrayList<BlogObject> items;
     	private Context mcontext;
@@ -112,6 +114,7 @@ public class MainActivity extends ActionBarActivity implements NaverEventListene
             if (v == null) {
                 LayoutInflater vi = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 v = vi.inflate(R.layout.item_row, null);
+                
             }
             
            BlogObject Info = items.get(position);
@@ -127,6 +130,7 @@ public class MainActivity extends ActionBarActivity implements NaverEventListene
             	tv1.setText(Info.getTitle());
             	tv2.setText(Info.getDescription());
             }
+            
             return v;
         }
 

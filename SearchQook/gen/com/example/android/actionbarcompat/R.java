@@ -41,12 +41,12 @@ public final class R {
 		public static final int actionbar_compat_item_refresh_progress = 0x7f060002;
 		public static final int actionbar_compat_title = 0x7f060001;
 		public static final int menu_refresh = 0x7f060004;
-		public static final int toggle_title = 0x7f06000b;
+		public static final int toggle_title = 0x7f06000c;
 	}
 	public static final class layout {
 		public static final int actionbar_compat = 0x7f030000;
 		public static final int actionbar_indeterminate_progress = 0x7f030001;
-		public static final int main = 0x7f030004;
+		public static final int main = 0x7f030005;
 	}
 	public static final class menu {
 		public static final int main = 0x7f090000;
