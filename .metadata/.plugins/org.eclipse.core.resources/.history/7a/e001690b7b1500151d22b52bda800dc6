@@ -1,0 +1,133 @@
+package com.example.searchqook;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+import com.example.android.actionbarcompat.ActionBarActivity;
+import com.hhdd.messi.Naver;
+import com.hhdd.messi.event.NaverEventListener;
+//import com.hhdd.messi.naver.object.search.EncycObject;
+//import com.hhdd.messi.naver.object.search.ImageObject;
+import com.hhdd.messi.naver.object.search.BlogObject;
+
+public class MainActivity extends ActionBarActivity implements NaverEventListener.OnBlogListener{
+
+	private Naver open_api;
+	private BackPressCloseHandler backPressCloseHandler;
+	public Document doc;
+	
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+       open_api = new Naver();
+       open_api.setBlogListener(this);
+       open_api.setSearchKey("a868354ee2b5ee74ab78c84616a61480");
+       
+       backPressCloseHandler = new BackPressCloseHandler(this);
+       
+        Button btn = (Button) findViewById(R.id.bt1);
+        btn.setOnClickListener(new OnClickListener() {
+        	@Override
+        	public void onClick (View v) {
+        		EditText editText = (EditText)findViewById(R.id.et1);
+        		open_api.BlogSearch(editText.getText().toString());
+        	} });   
+    }
+    
+    @Override
+	public void onBackPressed() {
+		backPressCloseHandler.onBackPressed();
+	}
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+	public void onFaultResult(int arg0, String arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onResult(ArrayList<BlogObject> arg0) {
+		ListView listView = (ListView) findViewById(R.id.lv1);
+		ListAdapter b1_adapter = new ListAdapter(this, R.layout.item_row, arg0);
+		listView.setAdapter(b1_adapter);
+		
+	}
+
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+	
+
+	
+	public class ListAdapter extends ArrayAdapter<BlogObject>{
+    	public ArrayList<BlogObject> items;
+    	private Context mcontext;
+    	private int count = 0;
+    	
+    	public ListAdapter(Context context, int textViewResourceId, ArrayList<BlogObject> items) {
+            super(context, textViewResourceId, items);
+            mcontext = context;
+    		this.items = items;
+    	}
+    	
+    	@Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View v = convertView;
+            if (v == null) {
+                LayoutInflater vi = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                v = vi.inflate(R.layout.item_row, null);
+            }
+            
+           BlogObject Info = items.get(position);
+         
+            
+            if (Info != null) {
+            	//ImageView iv1 = (ImageView) v.findViewById(R.id.iv1);
+            	ImageView iv1 = (ImageView) v.findViewById(R.drawable.blog);
+            	TextView tv1 = (TextView) v.findViewById(R.id.tv1);
+            	TextView tv2 = (TextView) v.findViewById(R.id.tv2);
+				iv1.setImageResource(R.drawable.blog);
+				setContentView(iv1);
+            	tv1.setText(Info.getTitle());
+            	tv2.setText(Info.getDescription());
+            }
+            return v;
+        }
+
+		
+	}
+	
+	
+}

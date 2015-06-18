@@ -2,10 +2,13 @@ package com.example.searchqook;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import com.example.android.actionbarcompat.ActionBarActivity;
 import com.hhdd.messi.Naver;
 import com.hhdd.messi.event.NaverEventListener;
@@ -114,16 +118,19 @@ public class MainActivity extends ActionBarActivity implements NaverEventListene
          
             
             if (Info != null) {
+            	Drawable drawable = getResources().getDrawable(R.drawable.blog);
             	ImageView iv1 = (ImageView) v.findViewById(R.id.iv1);
+            	//ImageView iv1 = (ImageView) v.findViewById(R.drawable.blog);
             	TextView tv1 = (TextView) v.findViewById(R.id.tv1);
             	TextView tv2 = (TextView) v.findViewById(R.id.tv2);
-				//ImageView
-            	// = Info.getBloggerLink();
+				iv1.setImageDrawable(drawable);
             	tv1.setText(Info.getTitle());
             	tv2.setText(Info.getDescription());
             }
             return v;
         }
+
+		
 	}
 	
 	

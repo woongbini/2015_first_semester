@@ -56,12 +56,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int actionbar_compat_item_focused=0x7f020001;
         public static final int actionbar_compat_item_pressed=0x7f020002;
         public static final int actionbar_shadow=0x7f020003;
-        public static final int ic_action_refresh=0x7f020004;
-        public static final int ic_action_search=0x7f020005;
-        public static final int ic_action_share=0x7f020006;
-        public static final int ic_home=0x7f020007;
-        public static final int ic_launcher=0x7f020008;
-        public static final int ic_menu_share=0x7f020009;
+        public static final int blog=0x7f020004;
+        public static final int ic_action_refresh=0x7f020005;
+        public static final int ic_action_search=0x7f020006;
+        public static final int ic_action_share=0x7f020007;
+        public static final int ic_home=0x7f020008;
+        public static final int ic_launcher=0x7f020009;
+        public static final int ic_menu_share=0x7f02000a;
     }
     public static final class id {
         public static final int action_settings=0x7f06000c;
